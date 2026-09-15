@@ -1,0 +1,32 @@
+<UserControl x:Class="Toolkit.UI.Views.LinkBudgetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Toolkit.Application.ViewModels;assembly=Toolkit.Application">
+    <UserControl.DataContext>
+        <vm:LinkBudgetViewModel/>
+    </UserControl.DataContext>
+    <Grid Margin="10">
+        <StackPanel>
+            <WrapPanel><TextBlock Text="Frequency (MHz):" Width="120"/><TextBox Text="{Binding FrequencyMHz}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Distance (km):" Width="120"/><TextBox Text="{Binding DistanceKm}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="TX Power (dBm):" Width="120"/><TextBox Text="{Binding TxPowerDbm}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="TX Antenna Gain (dBi):" Width="120"/><TextBox Text="{Binding TxAntennaGain}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="RX Antenna Gain (dBi):" Width="120"/><TextBox Text="{Binding RxAntennaGain}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Cable Loss (dB):" Width="120"/><TextBox Text="{Binding CableLoss}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Connector Loss (dB):" Width="120"/><TextBox Text="{Binding ConnectorLoss}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Other Loss (dB):" Width="120"/><TextBox Text="{Binding OtherLoss}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="RX Sensitivity (dBm):" Width="120"/><TextBox Text="{Binding RxSensitivity}" Width="80"/></WrapPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Button Content="Calculate" Command="{Binding CalculateCommand}" Width="80"/>
+                <Button Content="Clear" Command="{Binding ClearCommand}" Width="80" Margin="5,0"/>
+                <Button Content="Save" Click="Save_Click" Width="80" Margin="5,0"/>
+            </StackPanel>
+            <TextBlock Text="Results:" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="{Binding Result.FsplDb, StringFormat='FSPL: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.TotalLossDb, StringFormat='Total Loss: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.ReceivedPowerDbm, StringFormat='RX Power: {0:F2} dBm'}"/>
+            <TextBlock Text="{Binding Result.FadeMarginDb, StringFormat='Fade Margin: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.LinkStatus, StringFormat='Status: {0}'}" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

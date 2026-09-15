@@ -1,0 +1,25 @@
+<UserControl x:Class="Toolkit.UI.Views.BatteryBackupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Toolkit.Application.ViewModels;assembly=Toolkit.Application">
+    <UserControl.DataContext>
+        <vm:BatteryBackupViewModel/>
+    </UserControl.DataContext>
+    <StackPanel Margin="10">
+        <WrapPanel><TextBlock Text="Load (W):" Width="140"/><TextBox Text="{Binding LoadW}" Width="80"/></WrapPanel>
+        <WrapPanel Margin="0,5"><TextBlock Text="Voltage (V):" Width="140"/><TextBox Text="{Binding Voltage}" Width="80"/></WrapPanel>
+        <WrapPanel Margin="0,5"><TextBlock Text="Battery Ah:" Width="140"/><TextBox Text="{Binding BatteryAh}" Width="80"/></WrapPanel>
+        <WrapPanel Margin="0,5"><TextBlock Text="Number of Batteries:" Width="140"/><TextBox Text="{Binding NumBatteries}" Width="80"/></WrapPanel>
+        <WrapPanel Margin="0,5"><TextBlock Text="Efficiency (%):" Width="140"/><TextBox Text="{Binding Efficiency}" Width="80"/></WrapPanel>
+        <WrapPanel Margin="0,5"><TextBlock Text="DoD (%):" Width="140"/><TextBox Text="{Binding Dod}" Width="80"/></WrapPanel>
+        <WrapPanel Margin="0,5"><TextBlock Text="Req. Backup (h):" Width="140"/><TextBox Text="{Binding RequiredBackupHours}" Width="80"/></WrapPanel>
+        <Button Content="Calculate" Command="{Binding CalculateCommand}" Width="80" Margin="0,10"/>
+        <Button Content="Clear" Command="{Binding ClearCommand}" Width="80" Margin="5,0"/>
+        <TextBlock Text="Results:" FontWeight="Bold" Margin="0,10,0,5"/>
+        <TextBlock Text="{Binding Result.TotalCapacityWh, StringFormat='Total Capacity: {0:F0} Wh'}"/>
+        <TextBlock Text="{Binding Result.AvailableEnergyWh, StringFormat='Available Energy: {0:F0} Wh'}"/>
+        <TextBlock Text="{Binding Result.EstimatedBackupTimeHours, StringFormat='Backup Time: {0:F1} h'}"/>
+        <TextBlock Text="{Binding Result.RequiredCapacityAh, StringFormat='Required Capacity: {0:F0} Ah'}"/>
+        <TextBlock Text="{Binding Result.RequiredBatteries, StringFormat='Required Batteries: {0}'}"/>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,49 @@
+<UserControl x:Class="Toolkit.UI.Views.SitesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Toolkit.Application.ViewModels;assembly=Toolkit.Application">
+    <UserControl.DataContext>
+        <vm:SitesViewModel/>
+    </UserControl.DataContext>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Form -->
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Site Details" FontWeight="Bold" Margin="0,0,0,10"/>
+            <WrapPanel><TextBlock Text="Site ID:" Width="100"/><TextBox Text="{Binding SiteId}" Width="150"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Name:" Width="100"/><TextBox Text="{Binding Name}" Width="150"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Latitude:" Width="100"/><TextBox Text="{Binding Latitude}" Width="150"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Longitude:" Width="100"/><TextBox Text="{Binding Longitude}" Width="150"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Tower Height:" Width="100"/><TextBox Text="{Binding TowerHeight}" Width="150"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Site Type:" Width="100"/><TextBox Text="{Binding SiteType}" Width="150"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Technology:" Width="100"/><TextBox Text="{Binding Technology}" Width="150"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Notes:" Width="100"/><TextBox Text="{Binding Notes}" Width="150" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/></WrapPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Button Content="Add" Command="{Binding AddCommand}" Width="60" Margin="2"/>
+                <Button Content="Update" Command="{Binding UpdateCommand}" Width="60" Margin="2"/>
+                <Button Content="Delete" Command="{Binding DeleteCommand}" Width="60" Margin="2"/>
+                <Button Content="Clear" Command="{Binding ClearCommand}" Width="60" Margin="2"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- List -->
+        <Grid Grid.Column="1" Margin="10,0,0,0">
+            <ListView ItemsSource="{Binding Sites}" SelectedItem="{Binding SelectedSite}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Site ID" DisplayMemberBinding="{Binding SiteId}" Width="80"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="120"/>
+                        <GridViewColumn Header="Latitude" DisplayMemberBinding="{Binding Latitude}" Width="80"/>
+                        <GridViewColumn Header="Longitude" DisplayMemberBinding="{Binding Longitude}" Width="80"/>
+                        <GridViewColumn Header="Tower Height" DisplayMemberBinding="{Binding TowerHeight}" Width="80"/>
+                        <GridViewColumn Header="Technology" DisplayMemberBinding="{Binding Technology}" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,20 @@
+<UserControl x:Class="Toolkit.UI.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Content="RF Calculator" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="RF"/>
+            <Button Content="Link Budget" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Link"/>
+            <Button Content="Fiber Budget" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Fiber"/>
+            <Button Content="Battery Backup" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Battery"/>
+            <Button Content="Site Power" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="SitePower"/>
+            <Button Content="IP Subnet" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="IP"/>
+            <Button Content="Unit Converter" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Unit"/>
+            <Button Content="Microwave" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Micro"/>
+            <Button Content="Sites" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Sites"/>
+            <Button Content="Equipment" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Equip"/>
+            <Button Content="Projects" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Projects"/>
+            <Button Content="Coverage" Width="120" Height="50" Margin="5" Click="OpenTool_Click" Tag="Coverage"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

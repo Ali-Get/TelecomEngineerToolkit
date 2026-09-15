@@ -1,0 +1,15 @@
+<UserControl x:Class="Toolkit.UI.Views.UnitConverterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Toolkit.Application.ViewModels;assembly=Toolkit.Application">
+    <UserControl.DataContext>
+        <vm:UnitConverterViewModel/>
+    </UserControl.DataContext>
+    <StackPanel Margin="10">
+        <TextBlock Text="Convert:" FontWeight="Bold"/>
+        <ComboBox ItemsSource="{Binding ConversionTypes}" SelectedItem="{Binding SelectedConversionType}" Width="200" Margin="0,5"/>
+        <WrapPanel Margin="0,5"><TextBlock Text="Input:" Width="60"/><TextBox Text="{Binding InputValue, UpdateSourceTrigger=PropertyChanged}" Width="120"/></WrapPanel>
+        <Button Content="Convert" Command="{Binding ConvertCommand}" Width="80" Margin="0,10"/>
+        <WrapPanel><TextBlock Text="Output:" Width="60"/><TextBlock Text="{Binding OutputValue}" Width="120"/><TextBlock Text="{Binding OutputUnit}"/></WrapPanel>
+    </StackPanel>
+</UserControl>

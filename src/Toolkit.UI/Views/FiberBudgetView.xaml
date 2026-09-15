@@ -1,0 +1,35 @@
+<UserControl x:Class="Toolkit.UI.Views.FiberBudgetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Toolkit.Application.ViewModels;assembly=Toolkit.Application">
+    <UserControl.DataContext>
+        <vm:FiberBudgetViewModel/>
+    </UserControl.DataContext>
+    <Grid Margin="10">
+        <StackPanel>
+            <WrapPanel><TextBlock Text="Fiber Length (km):" Width="130"/><TextBox Text="{Binding FiberLengthKm}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Attenuation (dB/km):" Width="130"/><TextBox Text="{Binding Attenuation}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Splices:" Width="130"/><TextBox Text="{Binding Splices}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Splice Loss (dB):" Width="130"/><TextBox Text="{Binding SpliceLoss}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Connectors:" Width="130"/><TextBox Text="{Binding Connectors}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Connector Loss (dB):" Width="130"/><TextBox Text="{Binding ConnectorLossValue}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Splitter Loss (dB):" Width="130"/><TextBox Text="{Binding SplitterLoss}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="Other Losses (dB):" Width="130"/><TextBox Text="{Binding OtherLosses}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="TX Power (dBm):" Width="130"/><TextBox Text="{Binding TxPower}" Width="80"/></WrapPanel>
+            <WrapPanel Margin="0,5"><TextBlock Text="RX Sensitivity (dBm):" Width="130"/><TextBox Text="{Binding RxSensitivity}" Width="80"/></WrapPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Button Content="Calculate" Command="{Binding CalculateCommand}" Width="80"/>
+                <Button Content="Clear" Command="{Binding ClearCommand}" Width="80" Margin="5,0"/>
+                <Button Content="Save" Click="Save_Click" Width="80" Margin="5,0"/>
+            </StackPanel>
+            <TextBlock Text="Results:" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="{Binding Result.TotalFiberLoss, StringFormat='Fiber Loss: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.TotalConnectorLoss, StringFormat='Connector Loss: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.TotalSpliceLoss, StringFormat='Splice Loss: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.TotalLinkLoss, StringFormat='Total Link Loss: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.ExpectedRxPower, StringFormat='Expected RX Power: {0:F2} dBm'}"/>
+            <TextBlock Text="{Binding Result.OpticalMargin, StringFormat='Optical Margin: {0:F2} dB'}"/>
+            <TextBlock Text="{Binding Result.Status, StringFormat='Status: {0}'}" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
